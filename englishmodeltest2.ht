@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APTET PAPER 2 ENGLISH_MODEL PAPER 2</title>
+    <script>window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, startup: { typeset: true } };</script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #ffffff; font-family: Arial, sans-serif; margin: 0; }
+        body { overflow: hidden; height: 100dvh; }
+        
+        .document-container { width: 100%; max-width: 1000px; margin: 0 auto; transition: 0.3s; }
+        
+        /* Full Screen Quiz Mode Styles - strict absolute bounds */
+        .document-container.full-screen-quiz { max-width: 100% !important; height: 100dvh !important; margin: 0 !important; overflow: hidden; display: flex; flex-direction: column; }
+        .full-screen-quiz .page-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; padding: 0 !important; }
+        .full-screen-quiz .quiz-widget { flex: 1; display: flex; flex-direction: column; height: 100%; margin: 0 !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; }
+
+        .page-content { width: 100%; font-size: clamp(12px, 1.4vw, 16px); color: #333; column-gap: 40px; column-fill: balance; }
+        .layout-2 .page-content { column-count: 2; }
+        .layout-1 .page-content { column-count: 1; }
+        @media (max-width: 768px) { .page-content { column-count: 1 !important; } }
+        
+        .span-all { column-span: all; margin-bottom: 15px; }
+        .main-header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: #fff; padding: 10px; font-size: 1.6em; font-weight: bold; border-radius: 6px; }
+        .sub-header-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 10px; margin-bottom: 15px; }
+        .sub-header-left { background-color: #fff3e0; color: #e65100; padding: 8px 15px; font-weight: bold; font-size: 1.1em; border: 2px solid #ffb74d; border-radius: 6px; }
+        .sub-header-right { background-color: #d81b60; color: #fff; padding: 6px 18px; font-weight: bold; border-radius: 20px; }
+        
+        .section-pill { display: inline-block; border: 2px solid #4caf50; padding: 6px 18px; border-radius: 25px; font-weight: bold; background-color: #e8f5e9; color: #1b5e20; }
+        .section-box { display: inline-block; border: 2px solid #0288d1; padding: 8px 20px; font-weight: bold; background-color: #e1f5fe; color: #01579b; border-radius: 6px; }
+        
+        .list-item { display: flex; align-items: flex-start; margin-bottom: 6px; }
+        .bullet-hand { margin-right: 8px; font-size: 1.3em; color: #f57c00; flex-shrink: 0; }
+        .bullet-diamond { margin-right: 8px; font-size: 1.1em; color: #009688; flex-shrink: 0; margin-left: 15px; }
+        .bullet-sub { margin-right: 8px; font-size: 1em; color: #666; flex-shrink: 0; }
+        
+        .img-wrapper { margin: 15px 0; padding: 10px 0; text-align: center; }
+        .img-placeholder { width: 100%; max-height: 50vh; object-fit: contain; display: block; margin: 0 auto; }
+        .img-caption { font-size: 0.9em; color: #006064; font-weight: bold; margin-top: 8px; text-align: center; }
+
+        .custom-table { width: 100%; border-collapse: collapse; margin-top: 5px; font-size: 0.95em; }
+        .custom-table th, .custom-table td { border: 1px solid #999; padding: 10px; vertical-align: top; }
+        .custom-table th { background-color: #1e3c72; color: white; }
+        .custom-table tr:nth-child(even) { background-color: #f9f9f9; }
+
+        /* Professional Exam Quiz Engine Styles */
+        .quiz-widget { 
+            position: relative; display: flex; flex-direction: column;
+            border: 2px solid #b0bec5; border-radius: 12px; background: #fff; 
+            overflow: hidden; margin: 25px 0; box-shadow: 0 6px 12px rgba(0,0,0,0.1); 
+            break-inside: avoid; page-break-inside: avoid; 
+            height: 80vh; min-height: 500px; 
+        }
+        .quiz-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+        
+        /* Fixed Top Bar Layout */
+        .quiz-top-bar { 
+            display: flex; justify-content: space-between; align-items: center; 
+            background: #233e6c; color: white; padding: 12px 20px; 
+            flex-shrink: 0; z-index: 10; border-bottom: 2px solid #b0bec5;
+        }
+        .quiz-timer { font-weight: bold; color: white; font-size: 1.2em; font-family: Arial, sans-serif; background: #d32f2f; padding: 8px 16px; border-radius: 6px; display: flex; align-items: center; gap: 8px;}
+        .quiz-exam-title { font-size: 1.3em; font-weight: bold; flex: 1; text-align: center; letter-spacing: 0.5px; }
+        .quiz-palette-toggle { 
+            background: transparent; color: white; border: 1.5px solid white; border-radius: 6px;
+            width: 42px; height: 40px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.6em; cursor: pointer; transition: 0.2s; 
+        }
+        .quiz-palette-toggle:hover { background: white; color: #233e6c; }
+        
+        /* Slide-out Sidebar Palette */
+        .quiz-sidebar { 
+            position: absolute; right: 0; top: 0; bottom: 0; width: 300px; 
+            background: #eceff1; border-left: 2px solid #b0bec5; padding: 20px; 
+            display: flex; flex-direction: column; 
+            transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            z-index: 50; box-shadow: -4px 0 15px rgba(0,0,0,0.2); 
+            max-height: 100%; overflow: hidden;
+        }
+        .quiz-sidebar.open { transform: translateX(0); }
+        .quiz-palette-close { background: none; border: none; font-size: 2.5em; float: right; cursor: pointer; line-height: 1; margin-top: -15px; margin-bottom: 10px; color: #333; text-align: right; }
+        
+        /* Center Scrolling Question Area */
+        .quiz-q-wrapper { flex: 1; padding: 30px; overflow-y: auto; background: #fafafa; }
+        .quiz-question { font-weight: bold; font-size: 1.1em; margin-bottom: 20px; color: #333; line-height: 1.6; }
+        .quiz-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;}
+        .quiz-opt { display: flex; gap: 15px; align-items: center; padding: 12px 18px; border: 1px solid #cfd8dc; border-radius: 8px; cursor: pointer; transition: 0.2s; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.04); font-size: 1.05em;}
+        .quiz-opt:hover { background-color: #f5f5f5; border-color: #90a4ae; }
+        .quiz-opt input[type="radio"] { cursor: pointer; transform: scale(1.3); margin: 0; }
+        .quiz-opt-letter { font-weight: bold; background: #cfd8dc; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.9em; color: #37474f;}
+        .quiz-explanation { display: none; margin-top: 20px; padding: 15px; background: #e3f2fd; border-left: 5px solid #1976d2; border-radius: 6px; font-size: 1em; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        
+        /* Score Display (Now placed INSIDE the scrolling wrapper at the bottom) */
+        .quiz-score-display { display: none; font-size: 1.6em; font-weight: bold; color: #1b5e20; text-align: center; margin: 30px auto 10px auto; padding: 20px; background: #e8f5e9; border: 3px dashed #4caf50; border-radius: 8px; }
+
+        /* Fixed Bottom Controls */
+        .quiz-controls { 
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 25px; border-top: 2px solid #b0bec5; background: #37474f; 
+            flex-shrink: 0; z-index: 10;
+        }
+        .quiz-controls button { padding: 12px 25px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 1.05em; transition: 0.2s; min-width: 120px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .btn-prev, .btn-next { background: #607d8b; color: white; }
+        .btn-prev:hover, .btn-next:hover { background: #78909c; }
+        .btn-prev:disabled, .btn-next:disabled { background: #b0bec5; color: #eceff1; cursor: not-allowed; box-shadow: none;}
+        .btn-submit-exam { background: #4caf50; color: white; border: 2px solid #388e3c !important;}
+        .btn-submit-exam:hover { background: #43a047; transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.2);}
+        
+        /* Palette Grid Status Colors */
+        .quiz-legend { font-size: 0.9em; margin-bottom: 25px; font-weight: bold; color: #455a64; flex-shrink: 0;}
+        .legend-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .legend-box { width: 18px; height: 18px; border-radius: 4px; }
+        
+        /* Fully Scrollable Grid Area */
+        .palette-grid-wrapper { flex: 1; overflow-y: auto; padding-right: 5px; }
+        .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(45px, 1fr)); gap: 12px; }
+        .palette-btn { width: 100%; aspect-ratio: 1; border-radius: 6px; border: 2px solid transparent; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1em; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);}
+        
+        .not-visited { background: #ffffff; color: #546e7a; border-color: #cfd8dc; }
+        .not-answered { background: #f44336; color: white; border-color: #c62828; }
+        .answered { background: #4caf50; color: white; border-color: #2e7d32; }
+        .palette-btn.active { box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.5); border-color: #1976d2; transform: scale(1.1); z-index: 2;}
+        
+        /* Start Overlay */
+        .quiz-start-overlay { position:absolute; inset:0; background:rgba(255,255,255,0.98); z-index:20; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+        .editor-hide { display: none !important; }
+    
+        mjx-container { display: inline-block; }
+    </style>
+</head>
+<body>
+    <div id="book-state-data-b64" style="display:none;">W3siaWQiOiJibG9jay0xNzgyMjcwNzc2Mjc4Mzk0IiwidHlwZSI6InF1aXoiLCJxdWVzdGlvbiI6IlRoZSBzbmFrZSBzbG93bHkgPHU+c2xpdGhlcmVkPC91PiBpbnRvIHRoZSBsYXAgb2YgdGhlIGRvY3Rvci4gPGJyPkNob29zZSB0aGUgc3lub255bSBvZiB0aGUgdW5kZXJsaW5lZCB3b3JkLiIsIm9wdEEiOiJzbGlkIiwib3B0QiI6InN0cm9kZSIsIm9wdEMiOiJzd3VuZyIsIm9wdEQiOiJzcXVlZXplZCIsImFuc3dlciI6IkEiLCJleHBsYW5hdGlvbiI6IiIsImFsaWduIjoibGVmdCIsImxvY2FsTGluZVNwYWNlIjoiZGVmYXVsdCJ9LHsiaWQiOiJibG9jay0xNzgyMjcwNzc2MjgzNjY0IiwidHlwZSI6InF1aXoiLCJxdWVzdGlvbiI6IlRoZSBzZXJtb24gcmVmbGVjdHMgdGhlIEJ1ZGRoYSdzIHdpc2RvbSBhYm91dCBvbmUgPHU+aW5zY3J1dGFibGU8L3U+IGtpbmQgb2Ygc3VmZmVyaW5nLiA8YnI+Q2hvb3NlIHRoZSBhbnRvbnltIG9mIHRoZSB1bmRlcmxpbmVkIHdvcmQuIiwib3B0QSI6ImludGVsbGlnaWJsZSIsIm9wdEIiOiJteXN0ZXJpb3VzIiwib3B0QyI6InBydWRlbnQiLCJvcHREIjoic2VlbWluZyIsImFuc3dlciI6IkEiLCJleHBsYW5hdGlvbiI6IiIsImFsaWduIjoibGVmdCIsImxvY2FsTGluZVNwYWNlIjoiZGVmYXVsdCJ9LHsiaWQiOiJibG9jay0xNzgyMjcwNzc2MjgzNjM0IiwidHlwZSI6InF1aXoiLCJxdWVzdGlvbiI6IlRoZSB0cmFpbiBfX19fXyBhZnRlciBJIGhhZCBnb3Qgb2ZmIGZyb20gdGhlIGNvbXBhcnRtZW50LiA8YnI+Q2hvb3NlIHRoZSBjb3JyZWN0IG9wdGlvbiB0aGF0IGZpdHMgdGhlIGJsYW5rLiIsIm9wdEEiOiJoYWQgc3RhcnRlZCIsIm9wdEIiOiJzdGFydGVkIiwib3B0QyI6ImhhcyBzdGFydGVkIiwib3B0RCI6ImhhZCBiZWVuIHN0YXJ0ZWQiLCJhbnN3ZXIiOiJCIiwiZXhwbGFuYXRpb24iOiIiLCJhbGlnbiI6ImxlZnQiLCJsb2NhbExpbmVTcGFjZSI6ImRlZmF1bHQifSx7ImlkIjoiYmxvY2stMTc4MjI3MDc3NjI4MzM0MSIsInR5cGUiOiJxdWl6IiwicXVlc3Rpb24iOiJDaG9vc2UgdGhlIHdvcmQgd2l0aCBhIHN1ZmZpeCBtZWFuaW5nICdpbnN0cnVtZW50IGZvciBtZWFzdXJpbmcnLiIsIm9wdEEiOiJDaHJvbmljbGUiLCJvcHRCIjoiQ2hyb25vbWV0ZXIiLCJvcHRDIjoiQ2hyb25vbG9neSIsIm9wdEQiOiJDaHJvbmljIiwiYW5zd2VyIjoiQiIsImV4cGxhbmF0aW9uIjoiIiwiYWxpZ24iOiJsZWZ0IiwibG9jYWxMaW5lU3BhY2UiOiJkZWZhdWx0In0seyJpZCI6ImJsb2NrLTE3ODIyNzA3NzYyODMyNDMiLCJ0eXBlIjoicXVpeiIsInF1ZXN0aW9uIjoiLiBUaGUgbWluaXN0ZXIgaXMgPHU+Ymxvd2luZyBoaXMgb3duIHRydW1wZXQ8L3U+LiA8YnI+VGhlIHVuZGVybGluZWQgZXhwcmVzc2lvbiBtZWFucyB0aGF0Iiwib3B0QSI6ImhlIGhhcyBub3RoaW5nIG1vcmUgdGhhbiBhIHRydW1wZXQiLCJvcHRCIjoiaGUgaXMgdGFraW5nIGhpcyBvd24gdHJ1bXBldCIsIm9wdEMiOiJoZSB3YW50ZWQgdG8gc2VsbCBoaXMgdHJ1bXBldCIsIm9wdEQiOiJoZSBpcyBwcmFpc2luZyBoaW1zZWxmIG9uIGhpcyBkZWVkcyIsImFuc3dlciI6IkQiLCJleHBsYW5hdGlvbiI6IiIsImFsaWduIjoibGVmdCIsImxvY2FsTGluZVNwYWNlIjoiZGVmYXVsdCJ9LHsiaWQiOiJibG9jay0xNzgyMjcwNzc2Mjg0Mjc0IiwidHlwZSI6InF1aXoiLCJxdWVzdGlvbiI6IkluIGxvb2tzLCBzaGUgPHU+cmVzZW1ibGVzPC91PiBoZXIgbW90aGVyLiA8YnI+UmVwbGFjZSB0aGUgdW5kZXJsaW5lZCB3b3JkIHdpdGggdGhlIGNvcnJlY3QgcGhyYXNhbCB2ZXJiIGdpdmVuIGJlbG93LiIsIm9wdEEiOiJsb29rcyBhZnRlciIsIm9wdEIiOiJ0YWtlcyBhZnRlciIsIm9wdEMiOiJ0YWtlcyB1cCIsIm9wdEQiOiJtYWtlcyBhZnRlciIsImFuc3dlciI6IkIiLCJleHBsYW5hdGlvbiI6IiIsImFsaWduIjoibGVmdCIsImxvY2FsTGluZVNwYWNlIjoiZGVmYXVsdCJ9LHsiaWQiOiJibG9jay0xNzgyMjcwNzc2Mjg0MjY3IiwidHlwZSI6InF1aXoiLCJxdWVzdGlvbiI6Ii4gV2hpY2ggd29yZCB3b3VsZCB5b3UgZmluZCBiZXR3ZWVuIFwiRGVtYW5kXCIgYW5kIFwiRGVtb25cIiBpbiBhIGRpY3Rpb25hcnk/Iiwib3B0QSI6IkRlbnRpc3QiLCJvcHRCIjoiRGVsdXhlIiwib3B0QyI6IkRlbGF5Iiwib3B0RCI6IkRlbW9jcmFjeSIsImFuc3dlciI6IkQiLCJleHBsYW5hdGlvbiI6IiIsImFsaWduIjoibGVmdCIsImxvY2FsTGluZVNwYWNlIjoiZGVmYXVsdCJ9LHsiaWQiOiJibG9jay0xNzgyMjcwNzc2Mjg0ODYxIiwidHlwZSI6InF1aXoiLCJxdWVzdGlvbiI6IlNlbGVjdCB0aGUgc2VudGVuY2Ugd2l0aCB0aGUgY29ycmVjdCBwdW5jdHVhdGlvbiBtYXJrcy4iLCJvcHRBIjoiXCJIZSBpcyBoYXBweVwiIHRoZSBwcmluY2lwYWwgc2FpZCIsIm9wdEIiOiJUaGUgcHJpbmNpcGFsIHNhaWQsIFwiSGUgaXMgaGFwcHkuXCIiLCJvcHRDIjoiVGhlIHByaW5jaXBhbCBzYWlkIGhlIGlzIGhhcHB5LiIsIm9wdEQiOiJUaGUgcHJpbmNpcGFsIHNhaWQgJ0hlIGlzIGhhcHB5Jy4iLCJhbnN3ZXIiOiJCIiwiZXhwbGFuYXRpb24iOiIiLCJhbGlnbiI6ImxlZnQiLCJsb2NhbExpbmVTcGFjZSI6ImRlZmF1bHQifSx7ImlkIjoiYmxvY2stMTc4MjI3MDc3NjI4NDM0NSIsInR5cGUiOiJxdWl6IiwicXVlc3Rpb24iOiJIZSBmaW5pc2hlZCBoaXMgbWVhbCBhbmQgd2VudCB0byB3b3JrLiA8YnI+Q2hvb3NlIHRoZSBzZW50ZW5jZSB0aGF0IGNvcnJlY3RseSBjb252ZXJ0cyB0aGUgY29tcG91bmQgc2VudGVuY2UgaW50byBhIHNpbXBsZSBzZW50ZW5jZS4iLCJvcHRBIjoiSGF2aW5nIGZpbmlzaGVkIGhpcyBtZWFsLCBoZSB3ZW50IHRvIHdvcmsuIiwib3B0QiI6IkFzIGhlIGhhcyBmaW5pc2hlZCBoaXMgbWVhbC4gaGUgd2VudCB0byB3b3JrLiIsIm9wdEMiOiJUaG91Z2ggaGUgZmluaXNoZWQgaGlzIG1lYWwsIGhlIHdlbnQgdG8gd29yay4iLCJvcHREIjoiQWZ0ZXIgaGUgaGFkIGZpbmlzaGVkIGhpcyBtZWFsLCBoZSB3ZW50IHRvIHdvcmsuIiwiYW5zd2VyIjoiQSIsImV4cGxhbmF0aW9uIjoiIiwiYWxpZ24iOiJsZWZ0IiwibG9jYWxMaW5lU3BhY2UiOiJkZWZhdWx0In0seyJpZCI6ImJsb2NrLTE3ODIyNzA3NzYyODQxMzAiLCJ0eXBlIjoicXVpeiIsInF1ZXN0aW9uIjoiSWRlbnRpZnkgdGhlIGdyYW1tYXRpY2FsbHkgY29ycmVjdCBzZW50ZW5jZS4iLCJvcHRBIjoiVGhlIHRlYWNoZXIgYXMgd2VsbCBhcyB0aGUgc3R1ZGVudHMgaGFzIGxlZnQgdGhlIGNsYXNzIHJvb20uIiwib3B0QiI6IlRoZSB0ZWFjaGVyIGFzIHdlbGwgYXMgdGhlIHN0dWRlbnRzIGhhdmUgbGVmdCB0aGUgY2xhc3Mgcm9vbS4iLCJvcHRDIjoiVGhlIHRlYWNoZXIgYW5kIHRoZSBzdHVkZW50cyBoYXMgbGVmdCB0aGUgY2xhc3Mgcm9vbS4iLCJvcHREIjoiVGhlIHRlYWNoZXIgYXMgYW5kIHRoZSBzdHVkZW50cyBkaWQgbm90IGxlZnQgdGhlIGNsYXNzIHJvb20uIiwiYW5zd2VyIjoiQSIsImV4cGxhbmF0aW9uIjoiIiwiYWxpZ24iOiJsZWZ0IiwibG9jYWxMaW5lU3BhY2UiOiJkZWZhdWx0In0seyJpZCI6ImJsb2NrLTE3ODIyNzA3NzYyODQ3NyIsInR5cGUiOiJxdWl6IiwicXVlc3Rpb24iOiJTaGUgbWF5IG5vdCBiZSBBbmlsJ3Mgc2lzdGVyLiA8YnI+SWRlbnRpZnkgdGhlIGxhbmd1YWdlIGZ1bmN0aW9uIG9mIHRoZSBhYm92ZSBzZW50ZW5jZS4iLCJvcHRBIjoic3VnZ2VzdGlvbiIsIm9wdEIiOiJhZHZpY2UiLCJvcHRDIjoib2ZmZXIiLCJvcHREIjoicG9zc2liaWxpdHkiLCJhbnN3ZXIiOiJEIiwiZXhwbGFuYXRpb24iOiIiLCJhbGlnbiI6ImxlZnQiLCJsb2NhbExpbmVTcGFjZSI6ImRlZmF1bHQifSx7ImlkIjoiYmxvY2stMTc4MjI3MDc3NjI4NDY3NiIsInR5cGUiOiJxdWl6IiwicXVlc3Rpb24iOiJJZGVudGlmeSB0aGUgY29ycmVjdGx5IHNwZWx0IHdvcmQuIiwib3B0QSI6Im9saWdhcmNoaSIsIm9wdEIiOiJleHRlbXBvciIsIm9wdEMiOiJlY3RvbWFycGgiLCJvcHREIjoiYW1vcnBob3VzIiwiYW5zd2VyIjoiRCIsImV4cGxhbmF0aW9uIjoiIiwiYWxpZ24iOiJsZWZ0IiwibG9jYWxMaW5lU3BhY2UiOiJkZWZhdWx0In0seyJpZCI6ImJsb2NrLTE3ODIyNzA3NzYyODQ0MiIsInR5cGUiOiJxdWl6IiwicXVlc3Rpb24iOiIuIElkZW50aWZ5IHRoZSBjb3JyZWN0IHRyYW5zZm9ybWF0aW9uIG9mIHRoZSBmb2xsb3dpbmcgc2VudGVuY2UgaW50byByZXBvcnRlZCBzcGVlY2guIFxuSGlzIGZyaWVuZCBhc2tlZCwgXCJEaWQgeW91IHNlZSB0aGUgc25ha2UgdGhlIG5leHQgZGF5LCBkb2N0b3I/XCIiLCJvcHRBIjoiSGlzIGZyaWVuZCBhc2tlZCBpZiB5b3UgZGlkIHNlZSB0aGUgc25ha2UgdGhlIG5leHQgZGF5LiIsIm9wdEIiOiJIaXMgZnJpZW5kIGFza2VkIHRoZSBkb2N0b3Igd2hldGhlciBoZSBzZWVzIHRoZSBzbmFrZSB0aGUgbmV4dCBkYXkuIiwib3B0QyI6IkhpcyBmcmllbmQgYXNrZWQgdGhlIGRvY3RvciBpZiBoZSBoYXMgc2VlbiB0aGUgc25ha2UgdGhhdCBkYXkuIiwib3B0RCI6IkhpcyBmcmllbmQgYXNrZWQgdGhlIGRvY3RvciBpZiBoZSBoYWQgc2VlbiB0aGUgc25ha2UgdGhlIG5leHQgZGF5LiIsImFuc3dlciI6IkQiLCJleHBsYW5hdGlvbiI6IiIsImFsaWduIjoibGVmdCIsImxvY2FsTGluZVNwYWNlIjoiZGVmYXVsdCJ9LHsiaWQiOiJibG9jay0xNzgyMjcwNzc2Mjg0ODU1IiwidHlwZSI6InF1aXoiLCJxdWVzdGlvbiI6Ii4gQ2hvb3NlIHRoZSBjb3JyZWN0IGV4YW1wbGUgb2YgYSBub3VuIGNsYXVzZSBhcyBhbiBvYmplY3QuIiwib3B0QSI6IkkgbWF5IHlldCBsaXZlIGZvciBhIGZldyBtb3JlIHllYXJzLiIsIm9wdEIiOiJIZSBtYXkgeWV0IGxpdmUgZm9yIGEgZmV3IG1vcmUgeWVhcnMuIiwib3B0QyI6IldoeSBoZSBzYWlkIHdhcyBjb25mdXNpbmcuIiwib3B0RCI6IkhlIHNhaWQgdGhhdCBJIG1heSB5ZXQgbGl2ZSBmb3IgYSBmZXcgbW9yZSB5ZWFycy4iLCJhbnN3ZXIiOiJEIiwiZXhwbGFuYXRpb24iOiIiLCJhbGlnbiI6ImxlZnQiLCJsb2NhbExpbmVTcGFjZSI6ImRlZmF1bHQifSx7ImlkIjoiYmxvY2stMTc4MjI3MDc3NjI4NDg0NCIsInR5cGUiOiJxdWl6IiwicXVlc3Rpb24iOiIuIElkZW50aWZ5IHRoZSB3b3JkIHRoYXQgZGVzY3JpYmVzIGEgc3RhdGVtZW50IHRoYXQgZXhwcmVzc2VzIHNvbWV0aGluZyBwZW9wbGUgYmVsaWV2ZSBpcyB0cnVlLiIsIm9wdEEiOiJGYWxsb3V0Iiwib3B0QiI6ImFtYmlndW91cyIsIm9wdEMiOiJpbmltaXRhYmxlIiwib3B0RCI6ImRpY3R1bSIsImFuc3dlciI6IkQiLCJleHBsYW5hdGlvbiI6IiIsImFsaWduIjoibGVmdCIsImxvY2FsTGluZVNwYWNlIjoiZGVmYXVsdCJ9LHsiaWQiOiJibG9jay0xNzgyMjcwNzc2Mjg0MjQ0IiwidHlwZSI6InF1aXoiLCJxdWVzdGlvbiI6Ii4gSWRlbnRpZnkgdGhlIHNlbnRlbmNlIGluIHdoaWNoIHRoZSB2ZXJiIGFncmVlcyB3aXRoIHRoZSBzdWJqZWN0LiIsIm9wdEEiOiJPbmUgb2YgbXkgZnJpZW5kcyBsaWtlIHRvIGNvb2sgSXRhbGlhbiBmb29kLiIsIm9wdEIiOiJPbmUgb2YgbXkgZnJpZW5kcyBsaWtlcyB0byBjb29rIEl0YWxpYW4gZm9vZC4iLCJvcHRDIjoiT25lIG9mIG15IGZyaWVuZHMgY2FuIGxpa2UgdG8gY29vayBJdGFsaWFuIGZvb2QuIiwib3B0RCI6Ik9uZSBvZiBteSBmcmllbmRzIHNoYWxsIGxpa2UgdG8gY29vayBJdGFsaWFuIGZvb2QuIiwiYW5zd2VyIjoiQiIsImV4cGxhbmF0aW9uIjoiIiwiYWxpZ24iOiJsZWZ0IiwibG9jYWxMaW5lU3BhY2UiOiJkZWZhdWx0In0seyJpZCI6ImJsb2NrLTE3ODIyNzA3NzYyODQ0MDQiLCJ0eXBlIjoicXVpeiIsInF1ZXN0aW9uIjoiLiBJZGVudGlmeSB0aGUgc2VudGVuY2UgdGhhdCBleHByZXNzZXMgaW50ZW5zZSBlbW90aW9uIiwib3B0QSI6IkltcGVyYXRpdmUgc2VudGVuY2UiLCJvcHRCIjoiRXhjbGFtYXRvcnkgc2VudGVuY2UiLCJvcHRDIjoiSW50ZXJyb2dhdGl2ZSBzZW50ZW5jZSIsIm9wdEQiOiJBc3NlcnRpdmUgc2VudGVuY2UiLCJhbnN3ZXIiOiJCIiwiZXhwbGFuYXRpb24iOiIiLCJhbGlnbiI6ImxlZnQiLCJsb2NhbExpbmVTcGFjZSI6ImRlZmF1bHQifSx7ImlkIjoiYmxvY2stMTc4MjI3MDc3NjI4NTUyNiIsInR5cGUiOiJxdWl6IiwicXVlc3Rpb24iOiIuIENob29zZSB0aGUgbGlua2VyIHRoYXQgZml0cyB0aGUgYmxhbmsuIFxuX19fX18gZGlkIGhlIHNlZSB1cyBfX19fXyB3ZSBkaXNhcHBlYXJlZCBpbnRvIHRoZSBuaWdodC4iLCJvcHRBIjoiU2NhcmNlbHkuLi4uLi4uLi4uLiB0aGFuIiwib3B0QiI6Ik5vIHNvb25lciAuLi4uLi4uLiB0aGFuIiwib3B0QyI6Ik5vIHNvb25lciBkaWQuLi4uIHdoZW4iLCJvcHREIjoiSGFyZGx5Li4uLi4uLi4uLi4gdGhlbiIsImFuc3dlciI6IkIiLCJleHBsYW5hdGlvbiI6IiIsImFsaWduIjoibGVmdCIsImxvY2FsTGluZVNwYWNlIjoiZGVmYXVsdCJ9LHsiaWQiOiJibG9jay0xNzgyMjcwNzc2Mjg1NTk2IiwidHlwZSI6InF1aXoiLCJxdWVzdGlvbiI6Ii4gQ2hvb3NlIHRoZSBjb3JyZWN0IGFydGljbGUuIFxuJmVtc3A7JmVtc3A7X19fX18gbW9yZSB5b3UgdGFsaywgX19fX18gbGVzcyBJIHVuZGVyc3RhbmQuIiwib3B0QSI6IlRoZSA6IHRoZSIsIm9wdEIiOiJUaGUgOiBubyBhcnRpY2xlIiwib3B0QyI6Ik5vIGFydGljbGUgOiB0aGUiLCJvcHREIjoiTm8gYXJ0aWNsZXMgbmVlZGVkIiwiYW5zd2VyIjoiQSIsImV4cGxhbmF0aW9uIjoiIiwiYWxpZ24iOiJsZWZ0IiwibG9jYWxMaW5lU3BhY2UiOiJkZWZhdWx0In0seyJpZCI6ImJsb2NrLTE3ODIyNzA3NzYyODUzNzAiLCJ0eXBlIjoicXVpeiIsInF1ZXN0aW9uIjoiLiBEbyB5b3UgYWxsb3cgbWUgdG8gdXNlIHlvdXIgcGhvbmU/IENob29zZSB0aGUgb3B0aW9uIHRoYXQgY29udmV5cyB0aGUgc2FtZSBtZWFuaW5nIGFzIHRoZSBnaXZlbiBzZW50ZW5jZS4iLCJvcHRBIjoiU2hvdWxkIEkgdXNlIHlvdXIgcGhvbmU/Iiwib3B0QiI6IldpbGwgSSB1c2UgeW91ciBwaG9uZT8iLCJvcHRDIjoiTWF5IEkgdXNlIHlvdXIgcGhvbmU/Iiwib3B0RCI6Ik11c3QgSSB1c2UgeW91ciBwaG9uZT8iLCJhbnN3ZXIiOiJDIiwiZXhwbGFuYXRpb24iOiIiLCJhbGlnbiI6ImxlZnQiLCJsb2NhbExpbmVTcGFjZSI6ImRlZmF1bHQifSx7ImlkIjoiYmxvY2stMTc4MjI3MDc3NjI4NTUzNiIsInR5cGUiOiJxdWl6IiwicXVlc3Rpb24iOiIuIENob29zZSB0aGUgY29ycmVjdCBzZW50ZW5jZSB1c2luZyBhIHBvc3Nlc3NpdmUgcHJvbm91bi4iLCJvcHRBIjoiVGhpcyBib29rIGlzIG15LiIsIm9wdEIiOiJUaGlzIGJvb2sgaXMgbXkgYm9vay4iLCJvcHRDIjoiVGhpcyBib29rIGlzIG1pbmUuIiwib3B0RCI6IlRoaXMgYm9vayBpcyBteXNlbGYiLCJhbnN3ZXIiOiJDIiwiZXhwbGFuYXRpb24iOiIiLCJhbGlnbiI6ImxlZnQiLCJsb2NhbExpbmVTcGFjZSI6ImRlZmF1bHQifSx7ImlkIjoiYmxvY2stMTc4MjI3MDc3NjI4NTc4NCIsInR5cGUiOiJxdWl6IiwicXVlc3Rpb24iOiIuIENob29zZSB0aGUgd29yZCB3aXRoIG9kZCBzb3VuZC4gUGF5IGF0dGVudGlvbiBvbmx5IHRvIHRoZSB1bmRlcmxpbmVkIGxldHRlcnMgKHNvdW5kKS4iLCJvcHRBIjoibGl0Iiwib3B0QiI6InNpdCIsIm9wdEMiOiJwaW4iLCJvcHREIjoic2l0ZSIsImFuc3dlciI6IkQiLCJleHBsYW5hdGlvbiI6IiIsImFsaWduIjoibGVmdCIsImxvY2FsTGluZVNwYWNlIjoiZGVmYXVsdCJ9LHsiaWQiOiJibG9jay0xNzgyMjcwNzc2Mjg1NDgxIiwidHlwZSI6InF1aXoiLCJxdWVzdGlvbiI6Ii4gUGljayB0aGUgaW5jb3JyZWN0IHN0YXRlbWVudCBhYm91dCBEaWFyeS4iLCJvcHRBIjoiZXhwcmVzc2lvbiBvZiBwZXJzb25hbCByZWZsZWN0aW9ucyIsIm9wdEIiOiJ1c2Ugb2YgbGFuZ3VhZ2UgYXBwcm9wcmlhdGUgdG8gdGhlIG1vb2QiLCJvcHRDIjoidXNlIG9mIHNwZWNpZmljIHNlbnRlbmNlIHBhdHRlcm4gYW5kIHN0cnVjdHVyZXMgb25seSIsIm9wdEQiOiJzZWxmIGNyaXRpY2lzbSBhbmQgZnV0dXJlIHBsYW4iLCJhbnN3ZXIiOiJDIiwiZXhwbGFuYXRpb24iOiIiLCJhbGlnbiI6ImxlZnQiLCJsb2NhbExpbmVTcGFjZSI6ImRlZmF1bHQifSx7ImlkIjoiYmxvY2stMTc4MjI3MDc3NjI4NTE3OCIsInR5cGUiOiJxdWl6IiwicXVlc3Rpb24iOiIuIElkZW50aWZ5IGhvdyBwYXJhZ3JhcGhzIGRpZmZlciBmcm9tIHN0YW56YXMgaW4gcG9ldHJ5LiIsIm9wdEEiOiJQYXJhZ3JhcGhzIGFyZSBhbHdheXMgc2hvcnRlciB0aGFuIHN0YW56YXMgaW4gZXZlcnkgdGV4dC4iLCJvcHRCIjoiU3RhbnphcyB1c3VhbGx5IGZvbGxvdyBhIGZpeGVkIHN0cnVjdHVyZSB3aGVyZWFzIHBhcmFncmFwaCBsZW5ndGggdmFyaWVzIGFjY29yZGluZyB0byB0aGUgaWRlYS4iLCJvcHRDIjoiU3RhbnphcyBlbmhhbmNlIHRoZSBiZWF1dHkgb2YgdGhlIHBhcmFncmFwaHMgYW5kIHBvZXRyeSBoYXMgb3JkaW5hcnkgbGFuZ3VhZ2UuIiwib3B0RCI6IkV2ZXJ5ZGF5IHdyaXRpbmcgaXMgcG9ldHJ5IHdoZXJlIHBhcmFncmFwaHMgdXNlIHJoeXRobSBhbmQgYXJ0aXN0aWMgc3RydWN0dXJlLiIsImFuc3dlciI6IkIiLCJleHBsYW5hdGlvbiI6IiIsImFsaWduIjoibGVmdCIsImxvY2FsTGluZVNwYWNlIjoiZGVmYXVsdCJ9LHsiaWQiOiJibG9jay0xNzgyMjcwNzc2Mjg1Mjc4IiwidHlwZSI6InF1aXoiLCJxdWVzdGlvbiI6Ii4gVGhlIHByZXNlbnQgcGVyZmVjdCBpcyBub3QgdXNlZDogQ2hvb3NlIHRoZSBjb3JyZWN0IG9wdGlvbi4iLCJvcHRBIjoidG8gaW5kaWNhdGUgY29tcGxldGUgYWN0aW9ucyBpbiB0aGUgcmVjZW50IHBhc3QuIiwib3B0QiI6InRvIGRlc2NyaWJlIHBhc3QgZXZlbnQgd2hlbiB0aGVpciBlZmZlY3QgaXMgaW4gdGhlIHByZXNlbnQuIiwib3B0QyI6InRvIGluZGljYXRlIGFuIGFjdGlvbiBjb21wbGV0ZWQgaW4gdGhlIHBhc3Qgd2hvc2UgdGltZSBpcyBnaXZlbi4iLCJvcHREIjoidG8gaW5kaWNhdGUgYW4gYWN0aW9uIGNvbXBsZXRlZCBpbiB0aGUgcGFzdCBhbmQgd2hvc2UgdGltZSBpcyBub3QgZ2l2ZW4uIiwiYW5zd2VyIjoiQyIsImV4cGxhbmF0aW9uIjoiIiwiYWxpZ24iOiJsZWZ0IiwibG9jYWxMaW5lU3BhY2UiOiJkZWZhdWx0In0seyJpZCI6ImJsb2NrLTE3ODIyNzA3NzYyODUyNjYiLCJ0eXBlIjoicXVpeiIsInF1ZXN0aW9uIjoiLiBTaGUgX19fX18gdW5jb25zY2lvdXMgc2luY2UgZm91cicgbyBjbG9jay4gQ2hvb3NlIHRoZSBjb3JyZWN0IHZlcmIgZm9ybS4iLCJvcHRBIjoid2VyZSIsIm9wdEIiOiJ3YXMiLCJvcHRDIjoiaGFzIGJlZW4iLCJvcHREIjoid2lsbCBiZSIsImFuc3dlciI6IkMiLCJleHBsYW5hdGlvbiI6IiIsImFsaWduIjoibGVmdCIsImxvY2FsTGluZVNwYWNlIjoiZGVmYXVsdCJ9LHsiaWQiOiJibG9jay0xNzgyMjcwNzc2Mjg1MzMzIiwidHlwZSI6InF1aXoiLCJxdWVzdGlvbiI6Ii4gQ2hvb3NlIHRoZSBjb3JyZWN0IG1hdGNoaW5nLiBcbjEpIEZsYWtlcyBvZiAmZW1zcDsmZW1zcDsmZW1zcDsmZW1zcDthKSBzdG9uZXNcbjIpIEEgcG9ydGlvbiBvZiAmZW1zcDsmZW1zcDsmZW1zcDsmZW1zcDtiKSBzbm93XG4zKSBBIGh1Z2UgaGVhcCBvZiAmZW1zcDsmZW1zcDsmZW1zcDsmZW1zcDtjKSBmcmllZCBmaXNoXG40KSBBIHBvdCBvZiAmZW1zcDsmZW1zcDsmZW1zcDsmZW1zcDtkKSBnb2xkKSIsIm9wdEEiOiIxLWIsIDItYywzIC1hLDQgLWQiLCJvcHRCIjoiMS1iLCAyLWQsIDMtYSwgNC1jIiwib3B0QyI6IjEtYywgMi1iLCAzLWEsIDQtZCIsIm9wdEQiOiIxLWMsIDItYSwgMy1iLCA0LWQiLCJhbnN3ZXIiOiJBIiwiZXhwbGFuYXRpb24iOiIiLCJhbGlnbiI6ImxlZnQiLCJsb2NhbExpbmVTcGFjZSI6ImRlZmF1bHQifSx7ImlkIjoiYmxvY2stMTc4MjI3MDc3NjI4NTcxOCIsInR5cGUiOiJxdWl6IiwicXVlc3Rpb24iOiIuIF9fX19fIGhpcyBuZWdsaWdlbmNlIHRoZSBjb21wYW55IHN1ZmZlcmVkIGEgaGVhdnkgbG9zcy4gRmlsbCBpbiB0aGUgYmxhbmsgd2l0aCBhcHByb3ByaWF0ZSBwaHJhc2UgcHJlcG9zaXRpb24uIiwib3B0QSI6IkluIGNhc2Ugb2YiLCJvcHRCIjoiT24gYWNjb3VudCBvZiIsIm9wdEMiOiJGb3IgdGhlIHNha2Ugb2YiLCJvcHREIjoiQnkgbWVhbnMgb2YiLCJhbnN3ZXIiOiJCIiwiZXhwbGFuYXRpb24iOiIiLCJhbGlnbiI6ImxlZnQiLCJsb2NhbExpbmVTcGFjZSI6ImRlZmF1bHQifSx7ImlkIjoiYmxvY2stMTc4MjI3MDc3NjI4NTQ0OCIsInR5cGUiOiJxdWl6IiwicXVlc3Rpb24iOiIuIFdoYXQgaXMgdGhlIGZvdXJ0aCBsZWFkaW5nIGNhdXNlIG9mIGRlYXRoIHdvcmxkd2lkZT8iLCJvcHRBIjoid2Fsa2luZyIsIm9wdEIiOiJwaHlzaWNhbCBpbmFjdGl2aXR5Iiwib3B0QyI6InJ1bm5pbmciLCJvcHREIjoicGxheWluZyIsImFuc3dlciI6IkIiLCJleHBsYW5hdGlvbiI6IiIsImFsaWduIjoibGVmdCIsImxvY2FsTGluZVNwYWNlIjoiZGVmYXVsdCJ9LHsidHlwZSI6InF1aXoiLCJhbGlnbiI6Imp1c3RpZnkiLCJsb2NhbExpbmVTcGFjZSI6ImRlZmF1bHQiLCJxdWVzdGlvbiI6IjxiPlJlYWQgdGhlIGZvbGxvd2luZyBwYXNzYWdlLjwvYj5cblxuUGh5c2ljYWwgaW5hY3Rpdml0eSBpcyB0aGUgZm91cnRoIGxlYWRpbmcgY2F1c2Ugb2YgZGVhdGggd29ybGR3aWRlLiBJdCdzIGFsc28gYXNzb2NpYXRlZCB3aXRoIGNocm9uaWMgaWxsbmVzcyBhbmQgZGlzYWJpbGl0eS4gUmVndWxhciBwaHlzaWNhbCBhY3Rpdml0eSBoZWxwcyB0byBwcmV2ZW50IGFuZCBtYW5hZ2UgbWFueSBjaHJvbmljIGRpc2Vhc2VzLiBQb3B1bGFyIHdheXMgdG8gYmUgcGh5c2ljYWxseSBhY3RpdmUgaW5jbHVkZSB3YWxraW5nLCBydW5uaW5nLCBjeWNsaW5nLCBhbmQgcGxheWluZyBzcG9ydHMuXG5cbldoYXQgaXMgdGhlIGZvdXJ0aCBsZWFkaW5nIGNhdXNlIG9mIGRlYXRoIHdvcmxkd2lkZT8iLCJvcHRBIjoid2Fsa2luZyIsIm9wdEIiOiJwaHlzaWNhbCBpbmFjdGl2aXR5Iiwib3B0QyI6InJ1bm5pbmciLCJvcHREIjoicGxheWluZyIsImFuc3dlciI6IkIiLCJleHBsYW5hdGlvbiI6IiIsImlkIjoiYmxvY2stMTc4MjI3MTIwODc0MzMxNiJ9XQ==</div>
+    <div id="layout-val" style="display:none;">1</div>
+    <div id="linespace-val" style="display:none;">1.6</div>
+    <div id="exam-title-val" style="display:none;">APTET PAPER 2 ENGLISH_MODEL PAPER 1</div>
+    
+    <div class="document-container full-screen-quiz">
+        
+            <div id="book-content" class="page-content layout-1" style="line-height: 1.6;"><div class="quiz-widget span-all">
+                        
+                        <div class="quiz-start-overlay" style="display: flex;">
+                            <h2 style="color:#1e3c72; font-size:2em; margin-bottom:10px;">Exam Ready</h2>
+                            <p style="font-size:1.2em; font-weight:bold; color:#d32f2f; margin-bottom:20px;">30 Questions | 30 Minutes</p>
+                            <button class="btn-start-quiz" style="background:#4caf50; color:white; border:none; padding:15px 30px; font-size:1.2em; border-radius:30px; cursor:pointer; font-weight:bold; box-shadow:0 4px 6px rgba(0,0,0,0.2);">Start Exam</button>
+                        </div>
+                    
+                        <div class="quiz-main">
+                            <div class="quiz-top-bar">
+                                <div class="quiz-timer">⏳ 29:29</div>
+                                <div class="quiz-exam-title">APTET PAPER 2 ENGLISH_MODEL PAPER 1</div>
+                                <button class="quiz-palette-toggle">☰</button>
+                            </div>
+                            <div class="quiz-q-wrapper">
+                                
+                        <div class="quiz-q-container" style="display: block; text-align: left;" data-answer="A">
+                            
+                            
+                            <div class="quiz-question"><b>Q1.</b> The snake slowly <u>slithered</u> into the lap of the doctor. <br>Choose the synonym of the underlined word.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776278394" value="A"><div class="quiz-opt-letter">A</div><div>slid</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776278394" value="B"><div class="quiz-opt-letter">B</div><div>strode</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776278394" value="C"><div class="quiz-opt-letter">C</div><div>swung</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776278394" value="D"><div class="quiz-opt-letter">D</div><div>squeezed</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="A">
+                            
+                            
+                            <div class="quiz-question"><b>Q2.</b> The sermon reflects the Buddha's wisdom about one <u>inscrutable</u> kind of suffering. <br>Choose the antonym of the underlined word.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283664" value="A"><div class="quiz-opt-letter">A</div><div>intelligible</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283664" value="B"><div class="quiz-opt-letter">B</div><div>mysterious</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283664" value="C"><div class="quiz-opt-letter">C</div><div>prudent</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283664" value="D"><div class="quiz-opt-letter">D</div><div>seeming</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="B">
+                            
+                            
+                            <div class="quiz-question"><b>Q3.</b> The train _____ after I had got off from the compartment. <br>Choose the correct option that fits the blank.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283634" value="A"><div class="quiz-opt-letter">A</div><div>had started</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283634" value="B"><div class="quiz-opt-letter">B</div><div>started</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283634" value="C"><div class="quiz-opt-letter">C</div><div>has started</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283634" value="D"><div class="quiz-opt-letter">D</div><div>had been started</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="B">
+                            
+                            
+                            <div class="quiz-question"><b>Q4.</b> Choose the word with a suffix meaning 'instrument for measuring'.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283341" value="A"><div class="quiz-opt-letter">A</div><div>Chronicle</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283341" value="B"><div class="quiz-opt-letter">B</div><div>Chronometer</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283341" value="C"><div class="quiz-opt-letter">C</div><div>Chronology</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283341" value="D"><div class="quiz-opt-letter">D</div><div>Chronic</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="D">
+                            
+                            
+                            <div class="quiz-question"><b>Q5.</b> . The minister is <u>blowing his own trumpet</u>. <br>The underlined expression means that</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283243" value="A"><div class="quiz-opt-letter">A</div><div>he has nothing more than a trumpet</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283243" value="B"><div class="quiz-opt-letter">B</div><div>he is taking his own trumpet</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283243" value="C"><div class="quiz-opt-letter">C</div><div>he wanted to sell his trumpet</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776283243" value="D"><div class="quiz-opt-letter">D</div><div>he is praising himself on his deeds</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="B">
+                            
+                            
+                            <div class="quiz-question"><b>Q6.</b> In looks, she <u>resembles</u> her mother. <br>Replace the underlined word with the correct phrasal verb given below.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284274" value="A"><div class="quiz-opt-letter">A</div><div>looks after</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284274" value="B"><div class="quiz-opt-letter">B</div><div>takes after</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284274" value="C"><div class="quiz-opt-letter">C</div><div>takes up</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284274" value="D"><div class="quiz-opt-letter">D</div><div>makes after</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="D">
+                            
+                            
+                            <div class="quiz-question"><b>Q7.</b> . Which word would you find between "Demand" and "Demon" in a dictionary?</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284267" value="A"><div class="quiz-opt-letter">A</div><div>Dentist</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284267" value="B"><div class="quiz-opt-letter">B</div><div>Deluxe</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284267" value="C"><div class="quiz-opt-letter">C</div><div>Delay</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284267" value="D"><div class="quiz-opt-letter">D</div><div>Democracy</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="B">
+                            
+                            
+                            <div class="quiz-question"><b>Q8.</b> Select the sentence with the correct punctuation marks.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284861" value="A"><div class="quiz-opt-letter">A</div><div>"He is happy" the principal said</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284861" value="B"><div class="quiz-opt-letter">B</div><div>The principal said, "He is happy."</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284861" value="C"><div class="quiz-opt-letter">C</div><div>The principal said he is happy.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284861" value="D"><div class="quiz-opt-letter">D</div><div>The principal said 'He is happy'.</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="A">
+                            
+                            
+                            <div class="quiz-question"><b>Q9.</b> He finished his meal and went to work. <br>Choose the sentence that correctly converts the compound sentence into a simple sentence.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284345" value="A"><div class="quiz-opt-letter">A</div><div>Having finished his meal, he went to work.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284345" value="B"><div class="quiz-opt-letter">B</div><div>As he has finished his meal. he went to work.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284345" value="C"><div class="quiz-opt-letter">C</div><div>Though he finished his meal, he went to work.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284345" value="D"><div class="quiz-opt-letter">D</div><div>After he had finished his meal, he went to work.</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="A">
+                            
+                            
+                            <div class="quiz-question"><b>Q10.</b> Identify the grammatically correct sentence.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284130" value="A"><div class="quiz-opt-letter">A</div><div>The teacher as well as the students has left the class room.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284130" value="B"><div class="quiz-opt-letter">B</div><div>The teacher as well as the students have left the class room.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284130" value="C"><div class="quiz-opt-letter">C</div><div>The teacher and the students has left the class room.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284130" value="D"><div class="quiz-opt-letter">D</div><div>The teacher as and the students did not left the class room.</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="D">
+                            
+                            
+                            <div class="quiz-question"><b>Q11.</b> She may not be Anil's sister. <br>Identify the language function of the above sentence.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-178227077628477" value="A"><div class="quiz-opt-letter">A</div><div>suggestion</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-178227077628477" value="B"><div class="quiz-opt-letter">B</div><div>advice</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-178227077628477" value="C"><div class="quiz-opt-letter">C</div><div>offer</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-178227077628477" value="D"><div class="quiz-opt-letter">D</div><div>possibility</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="D">
+                            
+                            
+                            <div class="quiz-question"><b>Q12.</b> Identify the correctly spelt word.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284676" value="A"><div class="quiz-opt-letter">A</div><div>oligarchi</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284676" value="B"><div class="quiz-opt-letter">B</div><div>extempor</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284676" value="C"><div class="quiz-opt-letter">C</div><div>ectomarph</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284676" value="D"><div class="quiz-opt-letter">D</div><div>amorphous</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="D">
+                            
+                            
+                            <div class="quiz-question"><b>Q13.</b> . Identify the correct transformation of the following sentence into reported speech. <br>His friend asked, "Did you see the snake the next day, doctor?"</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-178227077628442" value="A"><div class="quiz-opt-letter">A</div><div>His friend asked if you did see the snake the next day.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-178227077628442" value="B"><div class="quiz-opt-letter">B</div><div>His friend asked the doctor whether he sees the snake the next day.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-178227077628442" value="C"><div class="quiz-opt-letter">C</div><div>His friend asked the doctor if he has seen the snake that day.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-178227077628442" value="D"><div class="quiz-opt-letter">D</div><div>His friend asked the doctor if he had seen the snake the next day.</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="D">
+                            
+                            
+                            <div class="quiz-question"><b>Q14.</b> . Choose the correct example of a noun clause as an object.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284855" value="A"><div class="quiz-opt-letter">A</div><div>I may yet live for a few more years.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284855" value="B"><div class="quiz-opt-letter">B</div><div>He may yet live for a few more years.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284855" value="C"><div class="quiz-opt-letter">C</div><div>Why he said was confusing.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284855" value="D"><div class="quiz-opt-letter">D</div><div>He said that I may yet live for a few more years.</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="D">
+                            
+                            
+                            <div class="quiz-question"><b>Q15.</b> . Identify the word that describes a statement that expresses something people believe is true.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284844" value="A"><div class="quiz-opt-letter">A</div><div>Fallout</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284844" value="B"><div class="quiz-opt-letter">B</div><div>ambiguous</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284844" value="C"><div class="quiz-opt-letter">C</div><div>inimitable</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284844" value="D"><div class="quiz-opt-letter">D</div><div>dictum</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="B">
+                            
+                            
+                            <div class="quiz-question"><b>Q16.</b> . Identify the sentence in which the verb agrees with the subject.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284244" value="A"><div class="quiz-opt-letter">A</div><div>One of my friends like to cook Italian food.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284244" value="B"><div class="quiz-opt-letter">B</div><div>One of my friends likes to cook Italian food.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284244" value="C"><div class="quiz-opt-letter">C</div><div>One of my friends can like to cook Italian food.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284244" value="D"><div class="quiz-opt-letter">D</div><div>One of my friends shall like to cook Italian food.</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="B">
+                            
+                            
+                            <div class="quiz-question"><b>Q17.</b> . Identify the sentence that expresses intense emotion</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284404" value="A"><div class="quiz-opt-letter">A</div><div>Imperative sentence</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284404" value="B"><div class="quiz-opt-letter">B</div><div>Exclamatory sentence</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284404" value="C"><div class="quiz-opt-letter">C</div><div>Interrogative sentence</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776284404" value="D"><div class="quiz-opt-letter">D</div><div>Assertive sentence</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="B">
+                            
+                            
+                            <div class="quiz-question"><b>Q18.</b> . Choose the linker that fits the blank. <br>_____ did he see us _____ we disappeared into the night.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285526" value="A"><div class="quiz-opt-letter">A</div><div>Scarcely........... than</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285526" value="B"><div class="quiz-opt-letter">B</div><div>No sooner ........ than</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285526" value="C"><div class="quiz-opt-letter">C</div><div>No sooner did.... when</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285526" value="D"><div class="quiz-opt-letter">D</div><div>Hardly........... then</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="A">
+                            
+                            
+                            <div class="quiz-question"><b>Q19.</b> . Choose the correct article. <br>  _____ more you talk, _____ less I understand.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285596" value="A"><div class="quiz-opt-letter">A</div><div>The : the</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285596" value="B"><div class="quiz-opt-letter">B</div><div>The : no article</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285596" value="C"><div class="quiz-opt-letter">C</div><div>No article : the</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285596" value="D"><div class="quiz-opt-letter">D</div><div>No articles needed</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="C">
+                            
+                            
+                            <div class="quiz-question"><b>Q20.</b> . Do you allow me to use your phone? Choose the option that conveys the same meaning as the given sentence.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285370" value="A"><div class="quiz-opt-letter">A</div><div>Should I use your phone?</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285370" value="B"><div class="quiz-opt-letter">B</div><div>Will I use your phone?</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285370" value="C"><div class="quiz-opt-letter">C</div><div>May I use your phone?</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285370" value="D"><div class="quiz-opt-letter">D</div><div>Must I use your phone?</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="C">
+                            
+                            
+                            <div class="quiz-question"><b>Q21.</b> . Choose the correct sentence using a possessive pronoun.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285536" value="A"><div class="quiz-opt-letter">A</div><div>This book is my.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285536" value="B"><div class="quiz-opt-letter">B</div><div>This book is my book.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285536" value="C"><div class="quiz-opt-letter">C</div><div>This book is mine.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285536" value="D"><div class="quiz-opt-letter">D</div><div>This book is myself</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="D">
+                            
+                            
+                            <div class="quiz-question"><b>Q22.</b> . Choose the word with odd sound. Pay attention only to the underlined letters (sound).</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285784" value="A"><div class="quiz-opt-letter">A</div><div>lit</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285784" value="B"><div class="quiz-opt-letter">B</div><div>sit</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285784" value="C"><div class="quiz-opt-letter">C</div><div>pin</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285784" value="D"><div class="quiz-opt-letter">D</div><div>site</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="C">
+                            
+                            
+                            <div class="quiz-question"><b>Q23.</b> . Pick the incorrect statement about Diary.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285481" value="A"><div class="quiz-opt-letter">A</div><div>expression of personal reflections</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285481" value="B"><div class="quiz-opt-letter">B</div><div>use of language appropriate to the mood</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285481" value="C"><div class="quiz-opt-letter">C</div><div>use of specific sentence pattern and structures only</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285481" value="D"><div class="quiz-opt-letter">D</div><div>self criticism and future plan</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="B">
+                            
+                            
+                            <div class="quiz-question"><b>Q24.</b> . Identify how paragraphs differ from stanzas in poetry.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285178" value="A"><div class="quiz-opt-letter">A</div><div>Paragraphs are always shorter than stanzas in every text.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285178" value="B"><div class="quiz-opt-letter">B</div><div>Stanzas usually follow a fixed structure whereas paragraph length varies according to the idea.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285178" value="C"><div class="quiz-opt-letter">C</div><div>Stanzas enhance the beauty of the paragraphs and poetry has ordinary language.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285178" value="D"><div class="quiz-opt-letter">D</div><div>Everyday writing is poetry where paragraphs use rhythm and artistic structure.</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="C">
+                            
+                            
+                            <div class="quiz-question"><b>Q25.</b> . The present perfect is not used: Choose the correct option.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285278" value="A"><div class="quiz-opt-letter">A</div><div>to indicate complete actions in the recent past.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285278" value="B"><div class="quiz-opt-letter">B</div><div>to describe past event when their effect is in the present.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285278" value="C"><div class="quiz-opt-letter">C</div><div>to indicate an action completed in the past whose time is given.</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285278" value="D"><div class="quiz-opt-letter">D</div><div>to indicate an action completed in the past and whose time is not given.</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="C">
+                            
+                            
+                            <div class="quiz-question"><b>Q26.</b> . She _____ unconscious since four' o clock. Choose the correct verb form.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285266" value="A"><div class="quiz-opt-letter">A</div><div>were</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285266" value="B"><div class="quiz-opt-letter">B</div><div>was</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285266" value="C"><div class="quiz-opt-letter">C</div><div>has been</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285266" value="D"><div class="quiz-opt-letter">D</div><div>will be</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="A">
+                            
+                            
+                            <div class="quiz-question"><b>Q27.</b> . Choose the correct matching. <br>1) Flakes of     a) stones<br>2) A portion of     b) snow<br>3) A huge heap of     c) fried fish<br>4) A pot of     d) gold)</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285333" value="A"><div class="quiz-opt-letter">A</div><div>1-b, 2-c,3 -a,4 -d</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285333" value="B"><div class="quiz-opt-letter">B</div><div>1-b, 2-d, 3-a, 4-c</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285333" value="C"><div class="quiz-opt-letter">C</div><div>1-c, 2-b, 3-a, 4-d</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285333" value="D"><div class="quiz-opt-letter">D</div><div>1-c, 2-a, 3-b, 4-d</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="B">
+                            
+                            
+                            <div class="quiz-question"><b>Q28.</b> . _____ his negligence the company suffered a heavy loss. Fill in the blank with appropriate phrase preposition.</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285718" value="A"><div class="quiz-opt-letter">A</div><div>In case of</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285718" value="B"><div class="quiz-opt-letter">B</div><div>On account of</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285718" value="C"><div class="quiz-opt-letter">C</div><div>For the sake of</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285718" value="D"><div class="quiz-opt-letter">D</div><div>By means of</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: left;" data-answer="B">
+                            
+                            
+                            <div class="quiz-question"><b>Q29.</b> . What is the fourth leading cause of death worldwide?</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285448" value="A"><div class="quiz-opt-letter">A</div><div>walking</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285448" value="B"><div class="quiz-opt-letter">B</div><div>physical inactivity</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285448" value="C"><div class="quiz-opt-letter">C</div><div>running</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782270776285448" value="D"><div class="quiz-opt-letter">D</div><div>playing</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                        <div class="quiz-q-container" style="display: none; text-align: justify;" data-answer="B">
+                            
+                            
+                            <div class="quiz-question"><b>Q30.</b> <b>Read the following passage.</b><br><br>Physical inactivity is the fourth leading cause of death worldwide. It's also associated with chronic illness and disability. Regular physical activity helps to prevent and manage many chronic diseases. Popular ways to be physically active include walking, running, cycling, and playing sports.<br><br>What is the fourth leading cause of death worldwide?</div>
+                            <div class="quiz-options">
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782271208743316" value="A"><div class="quiz-opt-letter">A</div><div>walking</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782271208743316" value="B"><div class="quiz-opt-letter">B</div><div>physical inactivity</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782271208743316" value="C"><div class="quiz-opt-letter">C</div><div>running</div></label>
+                                <label class="quiz-opt" style="border-color: rgb(224, 224, 224);"><input type="radio" name="quiz-block-1782271208743316" value="D"><div class="quiz-opt-letter">D</div><div>playing</div></label>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <b>Explanation:</b><br>No explanation provided.
+                            </div>
+                            <div class="quiz-score-display" style="display: none;"></div>
+                        </div>
+                            </div>
+                            <div class="quiz-controls">
+                                <button class="btn-prev" disabled="" style="display: inline-block;">Previous</button>
+                                <button class="btn-submit-exam" onclick="QuizEngine.submit(this)" style="display: inline-block;">Submit</button>
+                                <button class="btn-next" style="display: inline-block;">Next</button>
+                            </div>
+                        </div>
+                        <div class="quiz-sidebar">
+                            <button class="quiz-palette-close">×</button>
+                            <div class="quiz-legend">
+                                <div class="legend-item"><div class="legend-box" style="background:#4caf50;"></div> Answered (<span class="cnt-ans">0</span>)</div>
+                                <div class="legend-item"><div class="legend-box" style="background:#f44336;"></div> Not Answered (<span class="cnt-not-ans">30</span>)</div>
+                                <div class="legend-item"><div class="legend-box" style="background:#ffffff; border:1px solid #ccc;"></div> Not Visited (<span class="cnt-not-vis">0</span>)</div>
+                            </div>
+                            <div class="palette-grid-wrapper">
+                                <div class="palette-grid">
+                                    <button class="palette-btn not-answered active">1</button><button class="palette-btn not-answered">2</button><button class="palette-btn not-answered">3</button><button class="palette-btn not-answered">4</button><button class="palette-btn not-answered">5</button><button class="palette-btn not-answered">6</button><button class="palette-btn not-answered">7</button><button class="palette-btn not-answered">8</button><button class="palette-btn not-answered">9</button><button class="palette-btn not-answered">10</button><button class="palette-btn not-answered">11</button><button class="palette-btn not-answered">12</button><button class="palette-btn not-answered">13</button><button class="palette-btn not-answered">14</button><button class="palette-btn not-answered">15</button><button class="palette-btn not-answered">16</button><button class="palette-btn not-answered">17</button><button class="palette-btn not-answered">18</button><button class="palette-btn not-answered">19</button><button class="palette-btn not-answered">20</button><button class="palette-btn not-answered">21</button><button class="palette-btn not-answered">22</button><button class="palette-btn not-answered">23</button><button class="palette-btn not-answered">24</button><button class="palette-btn not-answered">25</button><button class="palette-btn not-answered">26</button><button class="palette-btn not-answered">27</button><button class="palette-btn not-answered">28</button><button class="palette-btn not-answered">29</button><button class="palette-btn not-answered">30</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div>
+        
+    </div>
+
+    <script>
+                    const QuizEngine = {
+                        init: function() {
+                            document.querySelectorAll('.quiz-widget').forEach((widget, wIdx) => {
+                                if (widget.dataset.initialized) return;
+                                widget.dataset.initialized = 'true';
+                                
+                                const questions = widget.querySelectorAll('.quiz-q-container');
+                                const paletteBtns = widget.querySelectorAll('.palette-btn');
+                                const prevBtn = widget.querySelector('.btn-prev');
+                                const nextBtn = widget.querySelector('.btn-next');
+                                const timerEl = widget.querySelector('.quiz-timer');
+                                const startOverlay = widget.querySelector('.quiz-start-overlay');
+                                const startBtn = widget.querySelector('.btn-start-quiz');
+                                const toggleBtn = widget.querySelector('.quiz-palette-toggle');
+                                const closeSidebarBtn = widget.querySelector('.quiz-palette-close');
+                                const sidebar = widget.querySelector('.quiz-sidebar');
+                                const qWrapper = widget.querySelector('.quiz-q-wrapper');
+                                
+                                let currentIdx = 0;
+                                let statuses = Array(questions.length).fill('not-visited');
+                                let totalSeconds = questions.length * 60;
+                                let isSubmitted = false;
+
+                                function updateUI() {
+                                    questions.forEach((q, qIdx) => { q.style.display = qIdx === currentIdx ? 'block' : 'none'; });
+                                    if(prevBtn) prevBtn.disabled = currentIdx === 0;
+                                    if(nextBtn) nextBtn.disabled = currentIdx === questions.length - 1;
+                                    
+                                    paletteBtns.forEach((btn, qIdx) => {
+                                        btn.className = 'palette-btn ' + statuses[qIdx];
+                                        if(qIdx === currentIdx) btn.classList.add('active');
+                                    });
+                                    
+                                    const cntAns = widget.querySelector('.cnt-ans');
+                                    const cntNotAns = widget.querySelector('.cnt-not-ans');
+                                    const cntNotVis = widget.querySelector('.cnt-not-vis');
+                                    
+                                    if(cntAns) cntAns.innerText = statuses.filter(s=>s==='answered').length;
+                                    if(cntNotAns) cntNotAns.innerText = statuses.filter(s=>s==='not-answered').length;
+                                    if(cntNotVis) cntNotVis.innerText = statuses.filter(s=>s==='not-visited').length;
+                                    
+                                    if(qWrapper) qWrapper.scrollTop = 0;
+                                }
+
+                                function formatTime(sec) {
+                                    let m = Math.floor(sec / 60).toString().padStart(2, '0');
+                                    let s = (sec % 60).toString().padStart(2, '0');
+                                    return m + ':' + s;
+                                }
+
+                                function startTimer() {
+                                    timerEl.innerHTML = "⏳ " + formatTime(totalSeconds);
+                                    if(widget.dataset.timerId) clearInterval(parseInt(widget.dataset.timerId));
+                                    
+                                    let tid = setInterval(() => {
+                                        if (widget.dataset.submitted === 'true') { 
+                                            clearInterval(tid); 
+                                            return; 
+                                        }
+                                        totalSeconds--;
+                                        timerEl.innerHTML = "⏳ " + formatTime(totalSeconds);
+                                        if (totalSeconds <= 0) {
+                                            clearInterval(tid);
+                                            alert("⏳ Time is up! Auto-submitting the exam.");
+                                            QuizEngine.submit(widget, true);
+                                        }
+                                    }, 1000);
+                                    widget.dataset.timerId = tid;
+                                }
+
+                                if (startBtn) {
+                                    startBtn.addEventListener('click', () => {
+                                        startOverlay.style.display = 'none';
+                                        statuses[0] = 'not-answered';
+                                        updateUI();
+                                        startTimer();
+                                    });
+                                }
+
+                                if (toggleBtn) toggleBtn.addEventListener('click', () => { sidebar.classList.add('open'); });
+                                if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', () => { sidebar.classList.remove('open'); });
+
+                                questions.forEach((q, qIdx) => {
+                                    q.querySelectorAll('input[type="radio"]').forEach(radio => {
+                                        radio.addEventListener('change', () => {
+                                            statuses[qIdx] = 'answered';
+                                            updateUI();
+                                        });
+                                    });
+                                });
+                                
+                                paletteBtns.forEach((btn, qIdx) => {
+                                    btn.addEventListener('click', () => {
+                                        if(statuses[qIdx] === 'not-visited') statuses[qIdx] = 'not-answered';
+                                        currentIdx = qIdx;
+                                        updateUI();
+                                        sidebar.classList.remove('open'); 
+                                    });
+                                });
+                                
+                                if(prevBtn) prevBtn.addEventListener('click', () => {
+                                    if(currentIdx > 0) {
+                                        currentIdx--;
+                                        if(statuses[currentIdx] === 'not-visited') statuses[currentIdx] = 'not-answered';
+                                        updateUI();
+                                    }
+                                });
+                                if(nextBtn) nextBtn.addEventListener('click', () => {
+                                    if(currentIdx < questions.length - 1) {
+                                        currentIdx++;
+                                        if(statuses[currentIdx] === 'not-visited') statuses[currentIdx] = 'not-answered';
+                                        updateUI();
+                                    }
+                                });
+                            });
+                        },
+                        submit: function(widgetOrBtn, isAuto = false) {
+                            const widget = widgetOrBtn.closest ? widgetOrBtn.closest('.quiz-widget') : widgetOrBtn;
+                            if (widget.dataset.submitted === 'true') return;
+
+                            const questions = widget.querySelectorAll('.quiz-q-container');
+                            let score = 0;
+                            let allAttempted = true;
+
+                            questions.forEach(q => {
+                                let answered = false;
+                                q.querySelectorAll('input[type="radio"]').forEach(r => { if(r.checked) answered = true; });
+                                if(!answered) allAttempted = false;
+                            });
+
+                            if(!isAuto && !allAttempted) {
+                                if(!confirm("You have unattempted questions! Are you sure you want to submit?")) return;
+                            }
+
+                            widget.dataset.submitted = 'true';
+                            if(widget.dataset.timerId) clearInterval(parseInt(widget.dataset.timerId));
+
+                            questions.forEach(q => {
+                                const ans = q.getAttribute('data-answer');
+                                const checked = q.querySelector('input[type="radio"]:checked');
+                                const opts = q.querySelectorAll('.quiz-opt');
+
+                                opts.forEach(opt => {
+                                    const radio = opt.querySelector('input[type="radio"]');
+                                    if(radio.value === ans) {
+                                        opt.style.backgroundColor = '#c8e6c9'; 
+                                        opt.style.borderColor = '#4caf50';
+                                    } else if (radio.checked && radio.value !== ans) {
+                                        opt.style.backgroundColor = '#ffcdd2'; 
+                                        opt.style.borderColor = '#f44336';
+                                    }
+                                    radio.disabled = true; 
+                                });
+
+                                if(checked && checked.value === ans) score++;
+                                const exp = q.querySelector('.quiz-explanation');
+                                if(exp) exp.style.display = 'block';
+                                
+                                const display = q.querySelector('.quiz-score-display');
+                                if(display) {
+                                    display.innerHTML = '🏁 Final Score: ' + score + ' / ' + questions.length;
+                                    display.style.display = 'block';
+                                }
+                            });
+
+                            const submitBtn = widget.querySelector('.btn-submit-exam');
+                            if(submitBtn) submitBtn.style.display = 'none';
+                        }
+                    };
+                    window.addEventListener('DOMContentLoaded', () => { QuizEngine.init(true); });
+                </script>
+</body>
+</html>
